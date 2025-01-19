@@ -4,7 +4,7 @@ This is a CLI tool for the Xenon language, which includes requires the following
 
 - A compiler (`xcc`) that compiles `.xn` source files into `.wasm`.
 - An interpreter (`xin`) that can run `.xn` code directly.
-- A WASM virtual machine (`xvm`) that executes compiled `.wasm` files.
+- A WASM virtual machine (`xrun`) that executes compiled `.wasm` files.
 
 `Carrier` CLI wraps these tools and manages project creation, configuration, building, and running code.
 
