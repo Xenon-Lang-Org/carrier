@@ -83,15 +83,15 @@ fn main() -> i32 {
         ..Default::default()
     };
 
-    let config_path = format!("{}/xn.toml", &name);
+    let config_path = format!("{}/carrier.toml", &name);
     save_config(&default_config, &config_path)?;
 
-    println!("Initialized a new XN project in `{}`", name);
+    println!("Initialized a new Xenon project in `{}`", name);
     Ok(())
 }
 
 pub fn handle_build(source: Option<PathBuf>, output: PathBuf) -> Result<()> {
-    let config = load_config("xn.toml")?;
+    let config = load_config("carrier.toml")?;
 
     std::fs::create_dir_all("out")?;
 
@@ -115,7 +115,7 @@ pub fn handle_build(source: Option<PathBuf>, output: PathBuf) -> Result<()> {
 }
 
 pub fn handle_run(mut files: Vec<PathBuf>, entry: Option<PathBuf>) -> Result<()> {
-    let config = load_config("xn.toml")?;
+    let config = load_config("carrier.toml")?;
 
     // If the user does not pass any files, gather everything under src/
     if files.is_empty() {
@@ -141,7 +141,7 @@ pub fn handle_run(mut files: Vec<PathBuf>, entry: Option<PathBuf>) -> Result<()>
 }
 
 pub fn handle_vm(wasm_file: PathBuf, args: Vec<String>) -> Result<()> {
-    let config = load_config("xn.toml")?;
+    let config = load_config("carrier.toml")?;
 
     let mut cmd = std::process::Command::new(&config.vm_path);
     cmd.arg(wasm_file);
@@ -154,7 +154,7 @@ pub fn handle_vm(wasm_file: PathBuf, args: Vec<String>) -> Result<()> {
 }
 
 pub fn handle_config(key: Option<String>, value: Option<String>) -> Result<()> {
-    let mut config = load_config("xn.toml")?;
+    let mut config = load_config("carrier.toml")?;
 
     match (key, value) {
         (Some(k), Some(v)) => {
@@ -165,7 +165,7 @@ pub fn handle_config(key: Option<String>, value: Option<String>) -> Result<()> {
                 "project_name" => config.project_name = v.clone(),
                 _ => println!("Unknown config key: {}", k),
             }
-            save_config(&config, "xn.toml")?;
+            save_config(&config, "carrier.toml")?;
             println!("Updated config key `{}` to `{}`", k, v);
         }
         (Some(k), None) => {
