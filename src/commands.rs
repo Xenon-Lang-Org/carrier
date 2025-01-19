@@ -1,7 +1,7 @@
 use anyhow::Result;
 use clap::Subcommand;
 use std::path::{Path, PathBuf};
-use walkdir::WalkDir; // For recursive directory walking
+use walkdir::WalkDir;
 
 use crate::config::{load_config, save_config, XnConfig};
 

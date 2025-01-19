@@ -7,7 +7,7 @@ use commands::Commands;
 
 #[derive(Parser)]
 #[command(
-    name = "xn",
+    name = "carrier",
     about = "A CLI tool for the Xenon language.",
     version
 )]
